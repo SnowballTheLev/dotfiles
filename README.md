@@ -1,1 +1,1 @@
-# dotfles
+# configuration/dotfiles
