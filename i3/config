@@ -209,13 +209,13 @@ bindsym $mod+r mode "resize"
 
 bindsym $mod+shift+0 exec i3lock -nfc 000000
 
-exec_always --no-startup-id feh --bg-center /home/snowball/.config/i3/3840x2160-w.png
+exec_always --no-startup-id feh --bg-center $HOME/.config/i3/3840x2160-b.png
 
 # bindsym $mod+Shift+d exec i3-msg '[class=".*"] move to workspace "__hidden__"'
 
 # bindsym $mod+Shift+s exec i3-msg 'move to workspace current'
 
-exec --no-startup-id /home/snowball/.config/i3/start-i3-conky
+exec --no-startup-id $HOME/.config/i3/start-i3-conky
 
 # bar {
 #     status_command i3status
@@ -225,8 +225,6 @@ exec --no-startup-id /home/snowball/.config/i3/start-i3-conky
 # exec --no-startup-id xsetroot -cursor_name Bibata-Original-Classic
 
 exec --no-startup-id compton
-
-# exec --no-startup-id xsetroot -cursor_name Bibata-Original-Classic
 
 bindsym $mod+shift+f exec thunar
 
@@ -283,15 +281,15 @@ hide_edge_borders both
 # Load the saved layout
 # bindsym $mod+Shift+dV layout load custom
 
-exec_always --no-startup-id /home/snowball/.config/i3/alternating_layouts.py
+exec_always --no-startup-id $HOME/.config/i3/alternating_layouts.py
 
-exec --no-startup-id /home/snowball/bin/disable-touchpad
+exec --no-startup-id $HOME/bin/disable-touchpad
 
 bindsym $mod+shift+d exec xfce4-appfinder
 
-exec --no-startup-id /home/snowball/bin/disable-ssh-agent
+exec --no-startup-id $HOME/bin/disable-ssh-agent
 
-exec --no-startup-id /home/snowball/bin/disable-light-locker
+exec --no-startup-id $HOME/bin/disable-light-locker
 
 exec_always --no-startup-id i3-msg reload
 
@@ -299,20 +297,20 @@ exec_always --no-startup-id i3-msg reload
 
 # exec --no-startup-id dbus-launch --exit-with-session i3
 
-# logout, reboot, poweroff, lock bindings
+# logout, reboot, poweroff/shutdown, lock bindings
 mode "exit: [l]ogout, [r]eboot, [s]hutdown, loc[k]" {
-    bindsym l exec i3-msg exit
-    bindsym r exec systemctl reboot
-    bindsym s exec systemctl shutdown
+    bindsym l exec i3-msg exit; killall -u snowball
+    bindsym r exec systemctl reboot -i
+    bindsym s exec systemctl poweroff -i
     bindsym k exec i3lock -nfc 000000
 
     bindsym Escape mode "default"; exec pkill i3-nagbar
     bindsym Return mode "default"; exec pkill i3-nagbar
 
-    bindsym l exec i3-nagbar -t info -m 'Logged out' ; mode "default"
-    bindsym r exec i3-nagbar -t info -m 'Rebooting' ; mode "default"
-    bindsym s exec i3-nagbar -t info -m 'Shutting down' ; mode "default"
-    bindsym k exec i3-nagbar -t info -m 'Locked' ; mode "default"
+#    bindsym l exec i3-nagbar -t info -m 'Logged out' ; mode "default"
+#    bindsym r exec i3-nagbar -t info -m 'Rebooting' ; mode "default"
+#    bindsym s exec i3-nagbar -t info -m 'Shutting down' ; mode "default"
+#    bindsym k exec i3-nagbar -t info -m 'Locked' ; mode "default"
 }
 
 bindsym $mod+Shift+e mode "exit: [l]ogout, [r]eboot, [s]hutdown, loc[k]"; exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your x session. Exit: [l]ogout, [r]eboot, [s]hutdown, loc[k]'"
