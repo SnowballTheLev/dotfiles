@@ -1,1 +1,1 @@
-# configuration/dotfiles
+# configurations/dotfiles
