@@ -28,11 +28,11 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -nfc 000000 --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+# exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -123,7 +123,7 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+# set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -154,7 +154,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -192,126 +192,137 @@ bindsym $mod+r mode "resize"
 # -----------------------------------------------------------------------------------------------------------------------------------------------------
 # snowball's config begin here
 
-# Define colors
+# Color Definitions
 # set $color_background <your_background_color>
 # set $color_text <your_text_color>
 # set $color_focus <your_focused_window_color>
 # set $color_unfocus <your_unfocused_window_color>
 
-# Set colors for various components
+# Set Colors for Various Components
 # client.focused          $color_focus $color_background $color_background $color_text
 # client.focused_inactive $color_unfocus $color_background $color_background $color_text
 # client.unfocused        $color_unfocus $color_background $color_background $color_text
 # client.urgent           $color_focus $color_background $color_background $color_text
 
-# Set font
+# Set Font
 # font pango:<your_chosen_font> 8
 
-bindsym $mod+shift+0 exec i3lock -nfc 000000
+# i3lock and Lock Screen Keybinding
+# exec --no-startup-id i3lock -nfc 000000 --nofork
+bindsym $mod+shift+z exec i3lock
 
-exec_always --no-startup-id feh --bg-center $HOME/.config/i3/3840x2160-b.png
+# Background Image/Auto Change Background
+# exec_always --no-startup-id feh --bg-center $HOME/.config/i3/3840x2160-b.png
+# exec --no-startup-id sleep 5 && /bin/sh $HOME/.config/i3/change-background
+exec --no-startup-id $HOME/.config/i3/change-background
 
+# Window Management
 # bindsym $mod+Shift+d exec i3-msg '[class=".*"] move to workspace "__hidden__"'
-
 # bindsym $mod+Shift+s exec i3-msg 'move to workspace current'
 
+# Conky
 exec --no-startup-id $HOME/.config/i3/start-i3-conky
 
+# i3bar
 # bar {
 #     status_command i3status
 #     position top
 # }
 
+# Set Cursor Theme
 # exec --no-startup-id xsetroot -cursor_name Bibata-Original-Classic
 
+# Compositor
 exec --no-startup-id compton
 
+# File Management/Keybinding
 bindsym $mod+shift+f exec thunar
 
+# Client Appearance
 # class                 border  backgr. text    indicator child_border
 # client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
 # client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 # client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 # client.urgent           #2f343a #900000 #ffffff #900000   #900000
 # client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-
 # client.background       #ffffff
-
-# window colors
 # class                 border  backgr. text    indicator child_border
 client.focused          #000000 #000000 #ffffff #000000   #000000
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-
 client.background       #ffffff
 
-hide_edge_borders both
-
+# Gaps and Layouts
 # Configure 5px of space between windows and to the screen edges.
 # gaps inner 2px
-
 # Configure an additional 5px of extra space to the screen edges,
 # for a total gap of 10px to the screen edges, and 5px between windows.
 # gaps outer 2px
-
 # Overwrite gaps to 0, I need all the space I can get on workspace 3.
 # workspace 3 gaps inner 0
 # workspace 3 gaps outer 0
-
 # Only enable outer gaps when there is exactly one window or split container on the workspace.
 # smart_gaps inverse_outer
-
 # Define custom layouts
 # set $split_layout splitv
 # set $center_layout splith
-
 # Assign windows to custom layouts
 # for_window [class=".*"] layout $split_layout
 # for_window [class=".*"] layout $center_layout
 # for_window [class=".*"] layout splith
 
-# Center-align window titles
+# Center-align Window Titles
 # title_align left
 
+# Save/Load Layouts
 # Save layout for later use
 # bindsym $mod+Shift+s layout save custom
-
 # Load the saved layout
 # bindsym $mod+Shift+dV layout load custom
 
+# Alternate Layouts by (https://github.com/olemartinorg/i3-alternating-layout)
 exec_always --no-startup-id $HOME/.config/i3/alternating_layouts.py
 
-exec --no-startup-id $HOME/bin/disable-touchpad
+# Disable Touchpad
+exec --no-startup-id $HOME/.config/i3/disable-touchpad
 
+# xfce4-appfinder Keybinding
 bindsym $mod+shift+d exec xfce4-appfinder
 
-exec --no-startup-id $HOME/bin/disable-ssh-agent
+# Disable SSH Agent
+exec --no-startup-id $HOME/.config/i3/disable-ssh-agent
 
-exec --no-startup-id $HOME/bin/disable-light-locker
+# Disable Light Locker
+exec --no-startup-id $HOME/.config/i3/disable-light-locker
 
+# Reload i3
 exec_always --no-startup-id i3-msg reload
 
+# PolicyKit Authentication Agents
 # exec --no-startup-id lxpolkit
-
 # exec --no-startup-id dbus-launch --exit-with-session i3
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 
-# logout, reboot, poweroff/shutdown, lock bindings
+# Exit/Exit Mode and System Control
+# Define bindings for logging out, rebooting, poweroff/shutting down, and locking
 mode "exit: [l]ogout, [r]eboot, [s]hutdown, loc[k]" {
-    bindsym l exec i3-msg exit; killall -u snowball
+    bindsym l exec i3-msg exit; exec $HOME/.config/i3/killall
     bindsym r exec systemctl reboot -i
     bindsym s exec systemctl poweroff -i
     bindsym k exec i3lock -nfc 000000
-
     bindsym Escape mode "default"; exec pkill i3-nagbar
     bindsym Return mode "default"; exec pkill i3-nagbar
-
 #    bindsym l exec i3-nagbar -t info -m 'Logged out' ; mode "default"
 #    bindsym r exec i3-nagbar -t info -m 'Rebooting' ; mode "default"
 #    bindsym s exec i3-nagbar -t info -m 'Shutting down' ; mode "default"
 #    bindsym k exec i3-nagbar -t info -m 'Locked' ; mode "default"
 }
 
-bindsym $mod+Shift+e mode "exit: [l]ogout, [r]eboot, [s]hutdown, loc[k]"; exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your x session. Exit: [l]ogout, [r]eboot, [s]hutdown, loc[k]'"
+# Exit Keybindings
+bindsym $mod+Shift+e mode "exit: [l]ogout, [r]eboot, [s]hutdown, loc[k]"; exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your x session.' -b 'loc[k]' 'i3lock -nfc 000000' -b '[s]hutdown' 'systemctl poweroff -i' -b  '[r]eboot' 'systemctl reboot -i' -b '[l]ogout' 'i3-msg exit'"
+# bindsym $mod+Shift+e mode "exit: [l]ogout, [r]eboot, [s]hutdown, loc[k]"; exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your x session. 									Exit:' -b 'loc[k]' 'i3lock -nfc 000000' -b '[s]hutdown' 'systemctl poweroff -i' -b  '[r]eboot' 'systemctl reboot -i' -b '[l]ogout' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# -----------------------------------------------------------------------------------------------------------------------------------------------------
