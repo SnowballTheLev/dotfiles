@@ -1,0 +1,8 @@
+#!/bin/bash
+
+sleep 3 
+
+conky -c $HOME/.config/i3/sysinfo-conky.conf &
+conky -c $HOME/.config/i3/taskmgr-conky.conf &
+
+exit
