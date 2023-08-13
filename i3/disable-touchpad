@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Find the ID of the Touchpad
+touchpad_id=$(xinput list --name-only | grep 'TouchPad')
+if [ -n "$touchpad_id" ]; then
+    # Disable the touchpad
+    xinput disable "$touchpad_id"
+fi
+
+exit
