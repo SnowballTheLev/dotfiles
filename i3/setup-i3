@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sudo apt install i3 feh compton lxappearance python3-i3ipc
+
+# xrdb -merge ~/.Xresources
+
+exit
