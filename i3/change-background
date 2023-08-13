@@ -1,0 +1,19 @@
+#!/bin/bash
+
+current_hour=$(date +%H)
+
+day_image_path=$HOME/.config/i3/3840x2160-w.png
+night_image_path=$HOME/.config/i3/3840x2160-b.png
+
+day_start_hour=6
+night_start_hour=18
+
+if [ "$current_hour" -ge "$day_start_hour" ] && [ "$current_hour" -lt "$night_start_hour" ]; then
+#    echo "Setting Day Background"
+    feh --bg-center "$day_image_path"
+else
+#    echo "Setting Night Background"
+    feh --bg-center "$night_image_path"
+fi
+
+exit
