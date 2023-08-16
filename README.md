@@ -1,6 +1,6 @@
 <h1>i3 Configuration</h1>
 
-<p>This repository contains configuration files for the i3 window manager on GNU/Linux. The configuration is not intended to provide a productive or efficient window management experience. It represents my work-in-progress customization.</p>
+<p>This repository contains configuration files for the i3 tiling window manager on Debian GNU/Linux 12 (bookworm). The configuration is not intended to provide a productive or efficient window management experience. It represents my work-in-progress customization.</p>
 
 <h2>Features</h2>
 
