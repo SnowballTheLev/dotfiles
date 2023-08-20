@@ -297,6 +297,9 @@ exec --no-startup-id $HOME/.config/i3/disable-ssh-agent
 # Disable Light Locker
 exec --no-startup-id $HOME/.config/i3/disable-light-locker
 
+# Disable nm-applet
+exec --no-startup-id $HOME/.config/i3/disable-nm-applet
+
 # Reload i3
 exec_always --no-startup-id i3-msg reload
 
