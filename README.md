@@ -7,7 +7,7 @@
 <ul>
   <li>Keyboard-driven window management for a fast and efficient workflow.</li>
   <li>Custom keybindings for various actions like launching applications, changing workspaces, and more.</li>
-  <li>Integration with <code>compton</code> for desktop effects and transparency.</li>
+  <li>Integration with <code>picom</code> for desktop effects and transparency.</li>
   <li>System power management options like logout, reboot, shutdown, and locking.</li>
 </ul>
 
@@ -15,7 +15,7 @@
 
 <ul>
   <li><a href="https://i3wm.org/">i3wm</a></li>
-  <li><a href="https://github.com/chjj/compton">compton</a></li>
+  <li><a href="https://github.com/yshui/picom">picom</a></li>
   <li><a href="https://github.com/jceb/dex">dex</a> (used for autostarting applications)</li>
   <li>Other utilities specified in the configuration file (e.g., <code>i3lock</code>, <code>xss-lock</code>, <code>feh</code>, <code>lxpolkit</code>, etc.)</li>
 </ul>
@@ -58,7 +58,7 @@ mv /path/to/i3-config/i3/* $HOME/.config/i3/
 
 <ul>
   <li>The configuration includes power management options (logout, reboot, shutdown, locking) bound to key combinations. These can be accessed in the mode "exit" (<code>$mod+Shift+e</code>).</li>
-  <li>Desktop effects and transparency are managed using <code>compton</code>. You can customize its behavior in the configuration.</li>
+  <li>Desktop effects and transparency are managed using <code>picom</code>. You can customize its behavior in the configuration.</li>
   <li>The <code>i3bar</code> is disabled and used <a href="https://github.com/brndnmtthws/conky">conky</a> with fork of <a href="https://github.com/SnowballTheLev/MinimalistConky">MinimalistConky</a> configuration instead.</li>
 </ul>
 
