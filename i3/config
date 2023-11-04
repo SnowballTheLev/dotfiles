@@ -215,7 +215,8 @@ bindsym $mod+shift+0 exec i3lock -nfc 000000
 # Background Image/Auto Change Background
 # exec_always --no-startup-id feh --bg-center $HOME/.config/i3/3840x2160-b.png
 # exec --no-startup-id sleep 5 && /bin/sh $HOME/.config/i3/change-background
-exec --no-startup-id $HOME/.config/i3/change-background
+# exec --no-startup-id $HOME/.config/i3/change-background
+exec_always --no-startup-id feh --bg-fill $HOME/.config/i3/black.png
 
 # Window Management
 # bindsym $mod+Shift+d exec i3-msg '[class=".*"] move to workspace "__hidden__"'
@@ -235,7 +236,7 @@ exec --no-startup-id $HOME/.config/i3/start-i3-conky
 
 # Compositor
 # exec --no-startup-id compton
-exec --no-startup-id picom
+# exec --no-startup-id picom
 
 # File Management/Keybinding
 bindsym $mod+shift+f exec thunar
