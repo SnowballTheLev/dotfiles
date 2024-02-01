@@ -1,0 +1,14 @@
+#!/bin/sh
+
+CITY="Myitkyina"
+
+weather_data=$(curl -s "wttr.in/$CITY?format=%t+%C+%y")
+
+temperature=$(echo "$weather_data" | awk '{print $1}')
+condition=$(echo "$weather_data" | awk '{printf "%s", $2; for (i=3; i<=10; i++) printf " %s", $i; printf "\n"}')
+
+#echo "🌡️ $temperature | 💧 $condition"
+echo "$temperature | $condition"
+
+exit
+
